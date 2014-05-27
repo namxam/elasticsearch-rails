@@ -41,18 +41,7 @@ say_status  "Rails", "Customizing `rails console`...\n", :yellow
 puts        '-'*80, ''; sleep 0.25
 
 
-gem "pry", group: 'development'
-
-environment nil, env: 'development' do
-  %q{
-  console do
-    config.console = Pry
-    Pry.config.history.file = Rails.root.join('tmp/console_history.rb').to_s
-    Pry.config.prompt = [ proc { |obj, nest_level, _| "(#{obj})> " },
-                          proc { |obj, nest_level, _| ' '*obj.to_s.size + '  '*(nest_level+1)  + '| ' } ]
-  end
-  }
-end
+gem "pry-rails", group: 'development'
 
 git add:    "Gemfile*"
 git add:    "config/"
